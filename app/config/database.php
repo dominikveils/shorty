@@ -65,10 +65,10 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'forge',
-			'username' => 'forge',
-			'password' => '',
+			'host'      => getenv('PG_HOST'),
+			'database'  => getenv('PG_DATABASE'),
+			'username'  => getenv('PG_USERNAME'),
+			'password'  => getenv('PG_PASSWORD'),
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
