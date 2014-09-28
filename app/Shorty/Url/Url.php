@@ -44,7 +44,7 @@ class Url extends \Eloquent {
   {
     $short = $this->makeHash();
     
-    $ip = Request::getClientIp();
+    $ip = ip2long(Request::getClientIp());
 
     $this->create(compact(['short', 'url', 'ip']));
 
