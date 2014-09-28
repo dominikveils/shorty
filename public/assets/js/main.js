@@ -15,7 +15,6 @@ requirejs(['shorty', 'jquery', 'bootstrap'], function (Shorty, $, bootstrap) {
   $(function () {
 
     Shorty.init();
-
   });
 });
 

@@ -9,6 +9,11 @@
     <div class="form-group">
       {{ Form::text('url', '', ['class' => 'form-control', 'placeholder' => 'http://www.google.com', 'id' => 'url']) }}
     </div> <!-- form-group -->
+
+    <div class="form-group">
+      {{ Form::captcha() }}
+    </div>
+
     <div class="form-group">
       {{ Form::submit('Make me shorty', ['class' => 'btn btn-primary btn-large btn-block', 'data-loading-text' => 'Processing...']) }}
     </div> <!-- form-group -->
@@ -22,6 +27,11 @@
               <span class="input-group-addon">Short URL:</span>
               <input type="text" class="form-control col-md-10" name="short_url" id="short_url" readonly>
             </div> <!-- input-group -->
+            <div class="form-group">
+              <span class="alert alert-success" id="short-url-created">
+                Short url was successful created!
+              </span>
+            </div>
         </form>
       </div> <!-- col-md-12 -->
     </div> <!-- row -->

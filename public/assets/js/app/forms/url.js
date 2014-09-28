@@ -11,12 +11,17 @@ define(['forms/default'], function (Form) {
   Url.prototype.execute = function() {
       var formData = this.formData(this.$form);
 
+      formData.recaptcha = true;
+
       this.Network.fetch(formData, this.callback);
   };
 
   Url.prototype.callback = function(data) {
     if (data !== undefined) {
       $('#short_url').val(data.url);
+      $('#short-url-created').fadeIn('slow').animate({opacity:1.0},3000).fadeOut('slow', function () {
+        $(this).css({'display': 'none'})
+      }).css({'display': 'inline-block'});
     }
   };
 

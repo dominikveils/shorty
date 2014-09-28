@@ -43,6 +43,10 @@ define(['jquery', 'utils/error'], function ($, Error) {
         if (options.$button !== undefined) {
           options.$button.button('reset');
         }
+        
+        if (options.recaptcha) {
+          Recaptcha.reload();
+        }
       });
     }
   };

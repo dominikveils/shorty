@@ -54,13 +54,13 @@ App::error(function(Exception $exception, $code)
 App::error(function(Shorty\Exceptions\ShortyException $exception, $code)
 {
   Log::error($exception);
-
+  
   if (Request::ajax())
   {
     return Response::json(['success' => false, 'messages' => $exception->getErrors()]);
   }
-
-  return Redirect::back()->withInput()->withErrors($exception->getErrors());
+  
+  return Redirect::intended('/')->withInput()->withErrors($exception->getErrors());
 });
 
 App::error(function(Shorty\Exceptions\HashNotFoundException $exception, $code)
@@ -69,7 +69,6 @@ App::error(function(Shorty\Exceptions\HashNotFoundException $exception, $code)
 
   return Redirect::home()->withErrors([$exception->getMessage()]);
 });
-
 
 /*
 |--------------------------------------------------------------------------

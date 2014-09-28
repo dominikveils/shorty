@@ -4,3 +4,12 @@ span.alert.alert-danger {
   width: 100%;
   display: inline-block;
 }
+
+#short-url-created {
+  margin: 10px 0 0 0;
+  padding: 10px;
+  width: 100%;
+  display: none;
+  text-align: center;
+  font-size: 1.2em;
+}

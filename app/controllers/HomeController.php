@@ -21,9 +21,7 @@ class HomeController extends BaseController {
 	public function store()
 	{
 		$hash = $this->execute(UrlSubmitCommand::class);
-
 		$url = route('home.hash', ['hash' => $hash]);
-
 
 		return Response::json(['success' => true, 'data' => ['url' => $url]]);
 	}

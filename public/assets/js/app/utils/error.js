@@ -3,25 +3,15 @@
 define(['jquery'], function ($) {
 
   return {
-    clearErrors: function ($form) {
-      if ($form !== undefined) {
-        $form.find('span.alert').remove();
-      }
-      else {
-        $('body').find('span.alert').remove();
-      }
+    clearErrors: function () {
+      
+      $('body').find('span.alert.alert-danger').remove();
     },
-    showErrors: function (errors, $form) {
+    showErrors: function (errors) {
       var self = this;
       $.each(errors, function (key, value) {
         var $span = self.getContainer(value);
-
-        if ($form !== undefined) {
-          $('#' + key, $form).after($span);
-        }
-        else {
-          $('#' + key).after($span); 
-        }
+        $('#' + key).closest('.form-group').append($span); 
       })
     },
     getContainer: function (message) {
