@@ -15,4 +15,8 @@ return array(
 
 	'debug' => true,
 
+	'provides' => [
+		'Way\Generators\GeneratorsServiceProvider',
+	],
+
 );
