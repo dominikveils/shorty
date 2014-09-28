@@ -51,6 +51,26 @@ App::error(function(Exception $exception, $code)
 	Log::error($exception);
 });
 
+App::error(function(Shorty\Exceptions\ShortyException $exception, $code)
+{
+  Log::error($exception);
+
+  if (Request::ajax())
+  {
+    return Response::json(['success' => false, 'messages' => $exception->getErrors()]);
+  }
+
+  return Redirect::back()->withInput()->withErrors($exception->getErrors());
+});
+
+App::error(function(Shorty\Exceptions\HashNotFoundException $exception, $code)
+{
+  Log::error($exception);
+
+  return Redirect::home()->withErrors([$exception->getMessage()]);
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

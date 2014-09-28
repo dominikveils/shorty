@@ -1,23 +1,43 @@
 <?php
 
+use Shorty\Url\UrlSubmitCommand;
+use Shorty\Url\HashTranslateCommand;
+
 class HomeController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
-
-	public function showWelcome()
+	/**
+	 * Home route
+	 * GET /
+	 */
+	public function index()
 	{
-		return View::make('hello');
+		return View::make('home.index');
+	}
+
+	/**
+	 * Save shorten url
+	 * POST /
+	 */
+	public function store()
+	{
+		$hash = $this->execute(UrlSubmitCommand::class);
+
+		$url = route('home.hash', ['hash' => $hash]);
+
+
+		return Response::json(['success' => true, 'data' => ['url' => $url]]);
+	}
+
+	/**
+	 * Redirect to target url by hash
+	 * 
+	 * GET /{hash}
+	 */
+	public function hash($hash)
+	{
+		$url = $this->execute(HashTranslateCommand::class, ['hash' => $hash]);
+		
+		return Redirect::to($url);
 	}
 
 }

@@ -1,0 +1,21 @@
+@import url('home/home.css');
+
+/* ------------------------- DEFAULTS ------------------------- */
+body {
+  padding-top: 40px;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+ul.errors {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.errors li {
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+}
