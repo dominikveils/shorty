@@ -7,7 +7,7 @@
     {{ Form::open(['route' => 'home.post', 'id' => 'url-form', 'class' => 'form', 'role' => 'form']) }}
 
     <div class="form-group">
-      {{ Form::text('url', '', ['class' => 'form-control', 'placeholder' => 'http://www.google.com', 'id' => 'url']) }}
+      {{ Form::text('url', '', ['class' => 'form-control input-lg', 'placeholder' => 'http://www.google.com', 'id' => 'url']) }}
     </div> <!-- form-group -->
 
     <div class="form-group">

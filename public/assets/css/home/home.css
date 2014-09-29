@@ -1,8 +1,14 @@
 span.alert.alert-danger {
   margin: 5px 0 0 0;
-  padding: 5px;
+  padding: 10px;
+  text-align: center;
   width: 100%;
   display: inline-block;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
 }
 
 #short-url-created {
@@ -12,4 +18,15 @@ span.alert.alert-danger {
   display: none;
   text-align: center;
   font-size: 1.2em;
+}
+
+#url {
+  padding: 20px;
+  font-size: 1.1em;
+  line-height: 1.1em;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
 }

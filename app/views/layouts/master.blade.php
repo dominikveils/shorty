@@ -14,7 +14,7 @@
     <div class="row">
       <div class="jumbotron">
         <h1>Shorty</h1>
-        <p>Simple url shortener</p>
+        <p>A simple url shortener service</p>
       </div><!-- jumbotron -->
     </div><!-- row -->
 
@@ -37,7 +37,7 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <div class="copyright">
-            <span>&copy; Dominik {{ date('Y') }}.</span>
+            <span>&copy; DV {{ date('Y') }}.</span>
             <span><a href="https://github.com/dominikveils/shorty" target=_blank>View on GitHub</a></span>
           </div>
         </div>
