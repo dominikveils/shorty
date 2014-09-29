@@ -19,3 +19,14 @@ ul.errors li {
   margin: 0;
   text-align: center;
 }
+
+
+/* ------------------------- FOOTER ------------------------- */
+
+footer {
+  margin-top: 60px;
+}
+
+.copyright {
+  text-align: center;
+}

@@ -32,6 +32,17 @@
 
 
     @yield('content')
+
+    <footer>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="copyright">
+            <span>&copy; Dominik {{ date('Y') }}.</span>
+            <span><a href="https://github.com/dominikveils/shorty" target=_blank>View on GitHub</a></span>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
   @section('js')
