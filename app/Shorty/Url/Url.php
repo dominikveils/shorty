@@ -27,6 +27,7 @@ class Url extends \Eloquent {
   public function getFullStatistic()
   {
     $timestamp = \Carbon\Carbon::now()->subMonth();
+    
     $raw_visitors = $this->statistic()
       ->where('created_at', '>', $timestamp)
       ->groupBy(\DB::raw('DATE(created_at)'))
