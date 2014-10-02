@@ -19,6 +19,7 @@ define(['forms/default'], function (Form) {
   Url.prototype.callback = function(data) {
     if (data !== undefined) {
       $('#short_url').val(data.url);
+      $('#statistic_url').val(data.statistic);
       $('#short-url-created').fadeIn('slow').animate({opacity:1.0},3000).fadeOut('slow', function () {
         $(this).css({'display': 'none'})
       }).css({'display': 'inline-block'});

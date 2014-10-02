@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"laracasts/commander": "~1.0",
-		"greggilbert/recaptcha": "1.*"
+		"greggilbert/recaptcha": "1.*",
+		"torann/geoip": "dev-master"
 	},
 	"require-dev": {
 		"way/generators": "~2.0"

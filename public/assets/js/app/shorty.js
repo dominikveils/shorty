@@ -10,7 +10,7 @@ define(['utils/events', 'forms/url', 'jquery'], function (Events, UrlForm, $) {
       Events.bind(this.events);
     },
     events: [
-      ['#short_url', 'click', function ($elem) {
+      ['.click-me', 'click', function ($elem) {
         $elem.select();
       }],
       ['#url-form', 'submit', UrlForm.init ]

@@ -18,7 +18,7 @@ return array(
 	|
 	*/
 
-	'default' => 'sqlite',
+	'default' => 'mysql',
 
 	'connections' => array(
 
@@ -28,6 +28,16 @@ return array(
 			'prefix'   => '',
 		),
 
+		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => getenv('DB_HOST'),
+			'database'  => getenv('DB_DATABASE'),
+			'username'  => getenv('DB_USERNAME'),
+			'password'  => getenv('DB_PASS'),
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
 	),
 
 );

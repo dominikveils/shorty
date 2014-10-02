@@ -1,5 +1,3 @@
-@import url('home/home.css');
-
 /* ------------------------- DEFAULTS ------------------------- */
 body {
   padding-top: 40px;
@@ -18,6 +16,18 @@ ul.errors li {
   padding: 10px;
   margin: 0;
   text-align: center;
+}
+
+.notice {
+  color: #a9a9a9;
+}
+
+.notice:hover {
+  color: #000;
+}
+
+.asterix {
+  color: red;
 }
 
 

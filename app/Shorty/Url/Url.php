@@ -1,14 +1,69 @@
 <?php namespace Shorty\Url;
 
+use Laracasts\Commander\Events\EventGenerator;
 use Shorty\Exceptions\CouldNotGenerateHashException;
 use Shorty\Exceptions\HashNotFoundException;
 use Request;
 
 class Url extends \Eloquent {
 
+  use EventGenerator;
+
   protected $table = 'urls';
   protected $fillable = ['short', 'url', 'ip'];
+  protected $dates = ['created_at'];
 
+  /**
+   * statistic table relation
+   */
+  public function statistic()
+  {
+    return $this->hasMany('Shorty\Statistic\Statistic', 'url_id');
+  }
+
+  /**
+   * Return full statistic for url. Separated by days
+   */
+  public function getFullStatistic()
+  {
+    $timestamp = \Carbon\Carbon::now()->subMonth();
+    $raw_visitors = $this->statistic()
+      ->where('created_at', '>', $timestamp)
+      ->groupBy(\DB::raw('DATE(created_at)'))
+      ->select(\DB::raw('count(*) as count'), 'created_at')
+      ->orderBy('created_at')
+      ->get();
+
+    $stats = [];
+
+    foreach ($raw_visitors as $row)
+    {
+      $stats[$row->created_at->format('Y-m-d')]['visitors'] = $row->count;
+    }
+
+    $uniq_visitors = $this->statistic()
+      ->where('created_at', '>', $timestamp)
+      ->groupBy('ip', \DB::raw('DATE(created_at)'))
+      ->select(\DB::raw('count(*) as count'), 'created_at')
+      ->orderBy('created_at')
+      ->get();
+
+    foreach ($uniq_visitors as $row)
+    {
+      $stats[$row->created_at->format('Y-m-d')]['uniq'] = $row->count;
+    }
+
+    // echo "<pre>";
+    // dd($uniq_visitors->toArray());
+    // echo "</pre>";
+    return $stats;
+  }
+
+  /**
+   * Make Long url short.
+   *
+   * @param string $url
+   */
   public static function short($url)
   {
     $model = new static;
@@ -52,17 +107,21 @@ class Url extends \Eloquent {
   }
 
   /**
-   * Return long url by hash
+   * Return url object by its hash
+   *
+   * @param string hash
+   *
+   * @throws Shorty\Exceptions\HashNotFoundException
+   * @return model
    */
-  public static function getLongUrlByHash($hash)
+  public static function getUrlByHash($hash)
   {
     $url = static::whereShort($hash)->first();
 
     if (is_null($url))
       throw new HashNotFoundException([], trans('url.hash_not_found'));
 
-    return $url->url;
-      
+    return $url;
   }
 
   /**

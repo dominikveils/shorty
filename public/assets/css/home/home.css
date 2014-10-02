@@ -30,3 +30,7 @@ span.alert.alert-danger {
   -o-border-radius: 20px;
   border-radius: 20px;
 }
+
+#result-container .input-group {
+  padding-bottom: 10px;
+}
