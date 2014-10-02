@@ -52,7 +52,7 @@ class Url extends \Eloquent {
     {
       $stats[$row->created_at->format('Y-m-d')]['uniq'] = $row->count;
     }
-    
+
     return $stats;
   }
 
