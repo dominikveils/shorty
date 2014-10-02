@@ -52,10 +52,7 @@ class Url extends \Eloquent {
     {
       $stats[$row->created_at->format('Y-m-d')]['uniq'] = $row->count;
     }
-
-    // echo "<pre>";
-    // dd($uniq_visitors->toArray());
-    // echo "</pre>";
+    
     return $stats;
   }
 
