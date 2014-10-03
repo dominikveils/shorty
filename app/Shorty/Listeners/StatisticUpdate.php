@@ -5,6 +5,7 @@ use Shorty\Url\Events\HashTranslated;
 use Torann\GeoIP\GeoIP;
 use URL, Log;
 use GeoIp2\Exception\AddressNotFoundException;
+use Exception;
 
 class StatisticUpdate extends EventListener {
 
@@ -27,7 +28,7 @@ class StatisticUpdate extends EventListener {
       $location = $this->geoip->getLocation('232.223.11.11');
     }
 
-    catch(AddressNotFoundException $e)
+    catch(Exception $e)
     {
       Log::error($e);
     }
