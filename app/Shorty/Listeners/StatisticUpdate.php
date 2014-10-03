@@ -37,7 +37,7 @@ class StatisticUpdate extends EventListener {
     if (empty($location))
     {
       $input = [
-        'ip' => null,
+        'ip' => ip2long($_SERVER['REMOTE_ADDR']),
         'country' => 'Unknown',
         'referer' => $referer
       ];

@@ -32,7 +32,7 @@ class Url extends \Eloquent {
       ->where('created_at', '>', $timestamp)
       ->groupBy(\DB::raw('DATE(created_at)'))
       ->select(\DB::raw('count(*) as count'), \DB::raw('DATE(created_at) as created_at'))
-      ->orderBy('created_at')
+      ->orderBy('created_at', 'desc')
       ->get();
 
     $stats = [];
@@ -46,7 +46,7 @@ class Url extends \Eloquent {
       ->where('created_at', '>', $timestamp)
       ->groupBy('ip', \DB::raw('DATE(created_at)'))
       ->select(\DB::raw('count(*) as count'), \DB::raw('DATE(created_at) as created_at'))
-      ->orderBy('created_at')
+      ->orderBy('created_at', 'desc')
       ->get();
 
     foreach ($uniq_visitors as $row)
